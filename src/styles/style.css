@@ -1,0 +1,224 @@
+:root {
+  --bg: #f7f7fb;
+  --card: #fff;
+  --text: #111;
+  --muted: #777;
+  --border: #ddd;
+}
+
+body[data-theme='dark'] {
+  --bg: #1a1a1d;
+  --card: #2a2a2d;
+  --text: #f2f2f2;
+  --muted: #999;
+  --border: #444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  margin: 0;
+  padding: 24px;
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.app {
+  max-width: 640px;
+  margin: 24px auto;
+  padding: 20px;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: background 0.3s;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--border);
+}
+
+.todo-form { display: flex; gap: 8px; margin-bottom: 12px; }
+
+.todo-form input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--text);
+}
+.todo-form button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.filters button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.filters .active {
+  background: #111;
+  color: #fff;
+}
+
+.actions span {
+  margin-right: 10px;
+  color: var(--muted);
+}
+.actions button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+.NotPushButton {
+    margin-bottom: 10px;
+    width: 210px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.NotPushButton:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.NotPushButton:active {
+    color: #000
+}
+
+.NotPushButton:active:after {
+    background: transparent;
+}
+
+.NotPushButton:hover:before {
+    opacity: 1;
+}
+
+.NotPushButton:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.todo-item .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo-item .text {
+  user-select: none;
+}
+
+.todo-item.completed .text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.todo-item .delete {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.edit-input {
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--text);
+}
+
+.empty {
+  color: var(--muted);
+  margin-top: 12px;
+}
